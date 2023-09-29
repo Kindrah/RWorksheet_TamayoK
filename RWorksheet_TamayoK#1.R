@@ -132,4 +132,5 @@
   print(paste("My name is",name, "and I am", age,"years old."))
   print(R.version.string)
   
-  #Output is "My name is Keandrah and I am 19 years old."
+  #Output is "My name is Keandrah, and I am 19 years old."
+  
