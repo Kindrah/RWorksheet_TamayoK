@@ -158,6 +158,7 @@
     
     AddIn5NewList <- append(Vegetables,c("Zucchini","Celery","Turnip","Beetroot","Spinach"),after = 5)
     AddIn5NewList
+    
    
      #10d. Remove the vegetables in index 5,10, and 15
     RemNewList <- Vegetables [c(-5, -10, -15)]
