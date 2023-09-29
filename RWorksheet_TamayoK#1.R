@@ -99,3 +99,37 @@
   numFirst <- sum(numFirst)
   numFirst
 
+#11a. data points from 10 to 11
+  dyesleven <- length(reverse_oneto_Onehundred)+length(numFirst)*length(numSec)
+  dyesleven
+  
+#12.
+  { x <- 0+ x + 5 + }
+ 
+#13. vectorname score
+  score <- c(72, 86, 92, 63, 88, 89, 91, 92, 75,
+             75, 77)
+  score
+  scoretwo <- score[2]
+  scorethree <- score[3]
+  scoretwo
+  scorethree
+
+#14. another vector
+  vectorwan <- c(1,2,NA,4,NA,6,7)
+
+#14a. 
+  
+  print(vectorwan,na.print="-999")
+
+  #14b. the NA changed to "999"
+#15. 
+  
+  name = readline (prompt="Input your name: ")
+  
+  age = readline(prompt = "Input your age: ")
+  
+  print(paste("My name is",name, "and I am", age,"years old."))
+  print(R.version.string)
+  
+  #Output is "My name is Keandrah and I am 19 years old."
