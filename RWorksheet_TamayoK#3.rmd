@@ -1,0 +1,126 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+#1. built in vector containing LETTERS
+LETTERS #Big letters
+letters #Small letters
+
+#1a. produce a vector that contains the first 11 letters.
+  letterseleven <- LETTERS[1:11]
+  letterseleven
+  
+#1b. contains the odd numbered letters.  
+  letterodd <- LETTERS [c(1,3,5,7,9,11,13,15,17,19,21,23,25)]
+  letterodd
+  
+#1c. contains vowels
+  lettervow <- LETTERS [c(1,5,9,15,21)]
+  lettervow
+
+#1d. contains the last 5 lowercase letters.
+  letterlow <- letters [c(22:26)]
+  letterlow
+
+#1e. contains letters between 15 to 24 letters in lowercase.
+  letterpeptotwe <-letters [16:23]
+  letterpeptotwe
+
+#2.  Create a vector(not a dataframe) with the average temperatures in April for Tuguegarao City, Manila, Iloilo City, Tacloban, Samal Island, and Davao City. The average temperatures in Celcius are 42, 39, 34, 34, 30, and 27 degrees.
+
+  AveragetemperaturesApril = c(42, 39, 34, 34, 30, 27)
+  AveragetemperaturesApril
+
+#2a.
+  Cityvector = c( "Tuguegarao City", "Manila", "Iloilo City", "Tacloban", "Samal Island", "Davao City")
+  Cityvector
+
+#2b.
+  temperature <- c(42, 39, 34, 34, 30, 27)
+  temperature
+  
+#2c.
+  cityTemp <- data.frame(
+  Cityvector,temperature
+  )
+  cityTemp
+
+#2d.
+  names(cityTemp) <- c("City", "Temperature")
+  cityTemp
+
+#2e.
+str(cityTemp)
+
+#the code displayed the structure of the cityTemp
+#it displayed the contents of the data frame and the summary of it.
+
+#2f. 
+row34 <- cityTemp[3:4, ]
+row34
+
+#2g.
+highestTemp <- cityTemp[which.max(cityTemp$Temperature),]
+highestTemp
+
+lowestTemp <- cityTemp[which.min(cityTemp$Temperature),]
+lowestTemp
+
+#Using Matrices
+#2.
+
+
+#2a. Create a matrix of one to eight and eleven to fourteen with four columns and three rows
+matrs <- matrix(c(1:8, 11:14), nrow = 3, ncol = 4)
+matrs
+
+#2b.
+matrsMul <- matrs*2
+matrsMul
+
+#2c.
+rowTwo <- matrsMul[2, ]
+rowTwo
+
+#2d. 
+rowWanTwo <- matrsMul[c(1,2),c(3,4)]
+rowWanTwo
+
+#2e. 
+colsTworowOne <- matrsMul[3,c(2,3)]
+colsTworowOne
+
+#2f. 
+colsFour <- matrsMul[,4]
+colsFour
+
+#2g.
+dimnames(matrsMul) <- list(c("isa", "dalawa", "tatlo"), c("uno", "dos", "tres", "quatro"))
+matrsMul
+
+#2h.
+matrs
+dim(matrs) <- c(6,2)
+matrs
+
+#Using Arrays
+
+#3a. 
+values <- c(1, 2, 3, 6, 7, 8, 9, 0, 3, 4, 5, 1)
+repValues <- rep(values, each = 2)
+
+arra <- array(repValues, dim = c(2,4,3))
+arra
+
+#3b.
+#it contains three dimensions.
+
+#3c.
+dimnames(arra) <- list(
+letters [1:2], #names of row
+LETTERS [1:4], #names of column
+c("1st-Dimensional Array", "2nd-Dimensional-Array", "3rd-Dimensional-Array")
+)
+arra
+
