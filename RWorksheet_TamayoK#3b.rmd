@@ -1,0 +1,123 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+. Create a data frame using the table below
+
+
+#1A. Write the codes
+
+
+HouseholdData <- data.frame(
+  Respond_1 = c(1:20),
+  
+  Sex = c("Female","Female","Male","Female","Female","Female","Female","Female","Female","Female","Male","Female","Female","Female","Female","Female","Female","Female","Male","Female"),
+  
+  FatherOccupation = c("Farmer","Others","Others","Others","Farmer","Driver","Others","Farmer","Farmer","Farmer","Others","Driver","Farmer","Others","Others","Farmer","Others","Farmer","Driver","Farmer"),
+  
+  PersonAtHome = c(5,7,3,8,5,9,6,7,8,4,7,5,4,7,8,8,3,11,7,6),
+  
+  SiblingsAtSchool = c(6,4,4,1,2,1,5,3,1,2,3,2,5,5,2,1,2,5,3,2),
+  
+  TypesOfHouses = c("Wood","Semi-Concrete","Concrete","Wood","Wood","Concrete","Concrete","Wood","Semi-Concrete","Concrete","Semi-Concrete","Concrete","Semi-Concrete","Semi-Concrete","Concrete","Concrete","Concrete","Concrete","Concrete","Semi-Concrete")
+  
+)
+HouseholdData
+
+
+
+#1b.  Describe the data. Get the structure or the summary of the data
+
+summary(HouseholdData)
+
+#1c Is the mean number of siblings attending is 5?
+MeanNumSib <- mean(HouseholdData$SiblingsAtSchool)
+IsMean5 <- MeanNumSib == 5
+print(IsMean5)
+
+# False
+
+#1d. Extract the 1st two rows and then all the columns using the subsetting functions.Write the codes and its output.
+
+ftrac <- HouseholdData[1:2, ]
+print(ftrac)
+
+#1e. Extract 3rd and 5th row with 2nd and 4th column. Write the codes and its result.
+
+selrowcol <- HouseholdData[c(3, 5), c(2, 4)]
+print(selrowcol)
+
+#1f. Select the variable types of houses then store the vector that results as types_houses.Write the codes.
+
+types_houses <- HouseholdData$TypeOfHouses
+
+#1g. Select only all Males respondent that their father occupation was farmer. Write thecodes and its output.
+
+MaleFarmers <- HouseholdData[HouseholdData$Sex =="Male" & HouseholdData$FatherOccupation == "Farmer", ]
+print(MaleFarmers)
+
+#1h. Select only all females respondent that have greater than or equal to 5 number ofsiblings attending school. Write the codes and its outputs.
+
+FemGT5Sib <- HouseholdData[HouseholdData$Sex == "Female" & HouseholdData$SiblingsAtSchool >= 5, ]
+print(FemGT5Sib)
+
+#2 Write a R program to create an empty data frame. Using the following codes:
+
+df = data.frame(Ints=integer(),
+                Doubles=double(), Characters=character(),
+                Logicals=logical(),
+                Factors=factor(),
+                stringsAsFactors=FALSE)
+
+print("Structure of the empty dataframe:")
+print(str(df))
+
+#2a. The data frame is empty
+
+#3
+HouseholdData <- data.frame(
+  Respondents = c(1:10),
+  Sex = c("Male", "Female", "Female", "Male", "Male", "Female", "Female", "Male", "Female", "Male"),
+  FathersOccupation = c(1, 2, 3, 3, 1, 2, 2, 3, 1, 3),
+  PersonAtHome = c(5, 7, 3, 8, 6, 4, 4, 2, 11, 6),
+  SiblingsAtSchool = c(2, 3, 0, 5, 2, 3, 1, 2, 6, 2),
+  TypesOfHouse = c("Wood", "Congrete", "Congrete", "Wood", "Semi-Congrete", "Semi-Congrete", "Wood", "Semi-Congrete", "Semi-Congrete", "Congrete")
+)
+HouseholdData
+
+#3a.Import the csv file into the R environment. Write the codes.
+
+write.csv(HouseholdData, file = "HouseholdData.csv", row.names = FALSE)
+ImporteData <- read.csv("HouseholdData.csv")
+
+
+#3b.. Convert the Sex into factor using factor() function and change it into integer.[Legend:Male = 1 and Female = 2]. Write the R codes and its output.
+
+ImporteData$Sex <- factor(ImporteData$Sex, levels = c("Male", "Female"))
+ImporteData$Sex <- as.integer(ImporteData$Sex)
+
+#3c.Convert the Type of Houses into factor and change it into integer. [Legend: Wood= 1; Congrete = 2; Semi-Congrete = 3]. Write the R codes and its output.
+ImporteData$TypesOfHouse <- factor(ImporteData$TypesOfHouse, levels = c("Wood", "Concrete", "Semi-Concrete"))
+ImporteData$TypesOfHouse <- as.integer(ImporteData$TypesOfHouse)
+
+
+ImporteData$TypesOfHouse <- factor(ImporteData$TypesOfHouse, levels = c("Wood", "Concrete", "Semi-Concrete"))
+ImporteData$TypesOfHouse <- as.integer(ImporteData$TypesOfHouse)
+
+#3d.On father’s occupation, factor it as Farmer = 1; Driver = 2; and Others = 3. Whatis the R code and its output?
+ImporteData$FathersOccupation <- factor(ImporteData$FathersOccupation, levels = c("Farmer", "Driver", "Others"))
+ImporteData$FathersOccupation <- as.integer(ImporteData$FathersOccupation)
+
+#3e.Select only all females respondent that has a father whose occupation is driver. Writethe codes and its output.
+FemaleDrivers <- ImporteData[ImporteData$Sex == 2 & ImporteData$FathersOccupation == 2, ]
+print(FemaleDrivers)
+
+#3f.Select the respondents that have greater than or equal to 5 number of siblings attendingschool. Write the codes and its output.
+GT5Sib <- ImporteData[ImporteData$SiblingsAtSchool >= 5, ]
+print(GT5Sib)
+
+#4. Interpret the graph
+
+# The graph in figure 3 represents the sentiments of people every day that has a major impact on our world everytime. In short, we always allow ourselves to show our opinions and our knowledge that we learn in a all day basis.
+
