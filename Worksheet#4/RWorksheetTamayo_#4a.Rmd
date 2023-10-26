@@ -15,7 +15,7 @@ householdData <- data.frame(
 )
 householdData
 
-1b.
+#1b.
 males<- householdData[householdData$Gender == "M", c("Gender", "shoeSize", "Height")]
 males
 
@@ -28,3 +28,42 @@ shoe_mean
 
 height_mean <- mean(householdData$Height)
 height_mean
+
+#2.
+
+nameofMonths <- c("March","April","January","November","January", "September","October","September","November","August", "January","November","November","February","May","August", "July","December","August","August","September","November","February","April")
+
+factor_months_vector <- factor(nameofMonths)
+factor_months_vector
+
+#3.
+summary(nameofMonths)
+summary(factor_months_vector)
+#The summary of factor is more useful than the first summary which is the summary of the vector.
+
+#4.
+
+direction_data <- c("East", "West", "North")
+new_order_data <- factor(direction_data,levels = c("East","West","North"))
+print(new_order_data)
+
+#5.
+#5a.
+excel_data <- read.csv("import_march.csv")
+excel_data
+
+#6.
+numinp <- as.numeric(readline(prompt = "Enter number: "))
+
+if (numinp > 50) {
+  print("The number you entered is beyond the range of 1 to 50")
+} else {
+  if (numinp == 20) {
+    print("TRUE")
+  } else {
+    print(numinp)
+  }
+}
+
+#7. 
+
