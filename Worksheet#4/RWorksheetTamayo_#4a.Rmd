@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 #RWorksheet_4a
 
 #1.
@@ -29,6 +34,9 @@ shoe_mean
 height_mean <- mean(householdData$Height)
 height_mean
 
+#1d.
+#Yes, the higher the height, the bigger the shoe size.
+
 #2.
 
 nameofMonths <- c("March","April","January","November","January", "September","October","September","November","August", "January","November","November","February","May","August", "July","December","August","August","September","November","February","April")
@@ -42,10 +50,17 @@ summary(factor_months_vector)
 #The summary of factor is more useful than the first summary which is the summary of the vector.
 
 #4.
+direction <- c("East","West","North")
+freq <- c(1,4,3)
 
-direction_data <- c("East", "West", "North")
-new_order_data <- factor(direction_data,levels = c("East","West","North"))
-print(new_order_data)
+factordirect <- factor(direction)
+factorFreq <- factor(freq)
+
+new_data <- factor(factordirect,levels = c("East","West","North"))
+print(new_data)
+
+new_data2 <- factor(factorFreq,levels = c(1,4,3))
+print(new_data2)
 
 #5.
 #5a.
@@ -66,4 +81,164 @@ if (numinp > 50) {
 }
 
 #7. 
+
+calculateMinBills <- function() {
+ 
+  bills <- c(1000, 500, 200, 100, 50)
+ 
+ 
+  amount <- as.numeric(readline("Enter the price of the snack (a multiple of 50 pesos): "))
+ 
+  if (is.na(amount) || amount %% 50 != 0) {
+    cat("Invalid input. Price must be a multiple of 50 pesos.\n")
+    return()
+  }
+ 
+  snackprice <- amount
+ 
+ 
+  bill1000 <- 0
+  bill500 <- 0
+  bill200 <- 0
+  bill100 <- 0
+  bill50 <- 0
+
+ 
+  if (snackprice >= 1000) {
+    bill1000 <- snackprice %/% 1000
+    snackprice <- snackprice %% 1000
+  }
+  if (snackprice >= 500) {
+    bill500 <- snackprice %/% 500
+    snackprice <- snackprice %% 500
+  }
+  if (snackprice >= 200) {
+    bill200 <- snackprice %/% 200
+    snackprice <- snackprice %% 200
+  }
+  if (snackprice >= 100) {
+    bill100 <- snackprice %/% 100
+    snackprice <- snackprice %% 100
+  }
+  if (snackprice >= 50) {
+    bill50 <- snackprice %/% 50
+  }
+
+
+  cat("Price:", amount, "pesos\n")
+  cat("Minimum number of bills needed:\n")
+  cat("1000 pesos:", bill1000, "bills\n")
+  cat("500 pesos:", bill500, "bills\n")
+  cat("200 pesos:", bill200, "bills\n")
+  cat("100 pesos:", bill100, "bills\n")
+  cat("50 pesos:", bill50, "bills\n")
+}
+
+calculateMinBills()
+
+#8a.
+
+studgrades <- data.frame(
+    Name = c("Annie","Thea","Steve","Hanna"),
+    Grade1 = c(85,65,75,95),
+    Grade2 = c(65,75,55,75),
+    Grade3 = c(85,90,80,100),
+    Grade4 = c(100,90,85,90)
+)
+studgrades
+
+
+`studgrades$Average <- (studgrades$Grade1 + studgrades$Grade2 + studgrades$Grade3 + studgrades$Grade4) / 4
+
+HighGrades <-  studgrades[studgrades$Average > 90, ]
+
+if(nrow(HighGrades)>0){
+  print(HighGrades$Name,"'s average grade this semester is:",HighGrades)
+}else{
+  print("there is no student that got 90 average grades")
+}
+
+#8c Without using the mean function, output as follows for the tests in which the average score was less than 80 out of 4 tests
+
+ AverageScores <- colMeans(studgrades[, -1])
+
+if (AverageScores[1] < 80) {
+    print("The 1st test was difficult.\n")
+}else if (AverageScores[2] < 80) {
+    print("The 2nd test was difficult.\n")
+}else if (AverageScores[3] < 80) {
+    print("The 3rd test was difficult.\n")
+}else if (AverageScores[4] < 80) {
+    print("The 4th test was difficult.\n")
+}else{
+  print("No test that students find it difficult")
+}
+ 
+ #8d Without using the max function, output as follows for students whose highest score for a semester exceeds 90 points
+ 
+ #Annie Scores
+ 
+if (studgrades[1,2] > studgrades[1,3] && studgrades[1,2] > studgrades[1,4] && studgrades[1,2] > studgrades[1,5]) {
+  AnnieScores <- studgrades[1,2]
+} else if (studgrades[1,3] > studgrades[1,4] && studgrades[1,3] > studgrades[1,5]) {
+  AnnieScores <- studgrades[1,3]
+} else if (studgrades[1,4] > studgrades[1,5] && studgrades[1,2] > studgrades[1,5]) {
+  AnnieScores <- studgrades[1,4]
+} else {
+  AnnieScores <- studgrades[1,5]
+}
+
+
+# Thea Scores
+if (studgrades[2,2] > studgrades[2,3] && studgrades[2,2] > studgrades[2,4] && studgrades[2,2] > studgrades[2,5]) {
+  TheaScores <- studgrades[2,2]
+} else if (studgrades[2,3] > studgrades[2,4] &&studgrades[2,3] > studgrades[2,5]) {
+  theaScores <- studgrades[2,3]
+} else if (studgrades[2,4] > studgrades[2,5] && studgrades[2,2] > studgrades[2,5]) {
+  TheaScores <- studgrades[2,4]
+} else {
+  TheaScores <-studgrades[2,5]
+}
+
+# Steve Scores
+if (studgrades[3,2] > studgrades[3,3] && studgrades[3,2] > studgrades[3,4] && studgrades[3,2] >studgrades[3,5]) {
+  SteveScores <- studgrades[3,2]
+} else if (studgrades[3,3] > studgrades[3,4] && studgrades[3,3] > studgrades[3,5]) {
+ SteveScores <- studgrades[2,3]
+} else if (studgrades[3,4] > studgrades[3,5] && studgrades[3,2] > studgrades[3,5]) {
+  SteveScores <- studgrades[3,4]
+} else {
+  SteveScores <- studgrades[3,5]
+}
+
+# Hanna Scores
+if (studgrades[4,2] > studgrades[4,3] && studgrades[4,2] > studgrades[4,4] && studgrades[4,2] > studgrades[4,5]) {
+  HannaScores <- studgrades[4,2]
+} else if (studgrades[4,3] > studgrades[4,4] && studgrades[4,3] > GradesMath[4,5]) {
+  HannaScores <- mathgrades[2,3]
+} else if (studgrades[4,4] > studgrades[4,5] && studgrades[4,2] > studgrades[4,5]) {
+  HannaScores <- studgrades[4,4]
+} else {
+  HannaScores <- studgrades[4,5]
+}
+
+studgrades$HighestGrades <- c(AnnieScores, TheaScores, SteveScores, HannaScores)
+
+
+NinetyHighest <- studgrades[studgrades$HighestGrades > 90,]
+NinetyHighest
+
+if (nrow(NinetyHighest) > 0) {
+  paste(NinetyHighest$Name, "'s highest grade this semester is", NinetyHighest$HighestGrade)
+} else {
+  paste("No students have an average math score over 90.")
+}
+
+
+
+
+
+
+
+
 
