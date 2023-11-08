@@ -1,0 +1,74 @@
+---
+title: "Untitled"
+output: pdf_document
+date: "2023-11-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1.
+
+```{r}    
+  vectorA <- c(1, 2, 3, 4, 5)
+
+  zeroMatrix <- matrix(0, nrow = 5, ncol = 5)
+
+
+  for (i in 1:5) {
+  for (j in 1:5) {
+    
+    diff <- abs(vectorA[i] - j)
+    
+    cat(diff, " ")
+  }
+  cat("\n")
+}
+```      
+
+2.
+```{r}
+  for(i in 1:5){
+    koko <- rep("*", i)
+    print(koko)
+  }
+      
+```
+
+3.
+```{r}
+     
+userInput <- as.numeric(readline("Enter a number to start the Fibonacci sequence: "))
+
+
+a <- 0
+b <- 1
+
+cat("Fibonacci sequence starting from", userInput, ": ")
+cat(userInput, " ")
+
+
+repeat {
+
+  nextFibo <- a + b
+
+
+  if (nextFibo > 500) {
+    break
+  }
+
+
+  cat(nextFibo, " ")
+
+ 
+  a <- b
+  b <- nextFibo
+}
+
+          
+```
+4.
+```{r}
+    
+```
