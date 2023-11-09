@@ -68,7 +68,43 @@ repeat {
 
           
 ```
-4.
+4a.
 ```{r}
-    
+  library(readr)
+householdData <- read_csv("househouldData.csv")
+householdData
 ```
+4b.
+```{r}
+    male <- householdData[householdData$Gender == "M", ]
+    female <- householdData[householdData$Gender == "F", ]
+    
+    maleCount <- nrow(male)
+    femaleCount <- nrow(female)
+    
+    cat("Numbers of male: ", maleCount, "\n")
+    cat("Numbers of female: ", femaleCount, "\n")
+  
+```
+4c.
+```{r}
+      gendCount <- c(male = maleCount, female = femaleCount)
+      
+      barplot(gendCount, main = "Numbers of Male and Female",
+              xlab = "Gender", ylab = "Numbers", col = c("aquamarine", "magenta"),
+              legend.text = TRUE, width = c(0.2, 0.2))
+      legend("topright", legend = names(gendCount), fill =  c("aquamarine", "magenta"))
+```
+5.
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
