@@ -1,0 +1,40 @@
+---
+title: "Rworksheet#4c"
+output: html_document
+date: "2023-11-22"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+1a.
+```{r}
+    library(readr)
+  #import the csv file
+    mpg <- read.csv("mpg.csv")
+    mpg
+    head(mpg) #print the csv file
+```
+1b.
+```{r}
+    
+     str(mpg)
+    
+```
+1c.
+```{r}
+      summary(mpg)
+```
+2a.
+```{r}
+  library(dplyr)
+
+  manufacture <- mpg %>%
+    group_by(manufacturer) %>%
+    summarize(models = list(unique(model)))
+  manufacture
+```
+
+
+
+
